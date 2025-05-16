@@ -16,9 +16,8 @@ var DB *gorm.DB
 
 func InitDB() {
 	//loading env file
-	err := godotenv.Load("../.env")
-	if err != nil {
-		log.Fatal("Error loading .env file")
+	if err := godotenv.Load(); err != nil {
+		log.Println(".env file not found — assuming environment variables are passed by Docker Compose")
 	}
 
 	//mySQL dsn format
